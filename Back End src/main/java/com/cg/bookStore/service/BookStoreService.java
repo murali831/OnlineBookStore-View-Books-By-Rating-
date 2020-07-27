@@ -25,5 +25,7 @@ public interface BookStoreService {
 
 	public List<BookInformation> getBestSellingBooks();
 	
+	public List<BookInformation> get4BestSellingBooks();
+	
 	
 }

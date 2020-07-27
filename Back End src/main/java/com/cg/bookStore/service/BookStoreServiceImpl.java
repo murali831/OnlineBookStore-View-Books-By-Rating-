@@ -105,6 +105,30 @@ public class BookStoreServiceImpl implements BookStoreService {
 		}
 		bookList.clear();
 		booksMap.clear();
-		return sellingBooks;
+		List<BookInformation> sellingbooklist2 = sellingBooks.subList(0, 4);
+		return sellingbooklist2;
+	}
+	@Override
+	public List<BookInformation> get4BestSellingBooks() {
+		List<CartInformation> cartList = bookdao.getBestSellingBooks();
+		List<BookInformation> bookList=new ArrayList<BookInformation>();
+		int i=0;
+		while(i<cartList.size()) {
+			bookList.add(cartList.get(i).getBook());
+			i++;
+		}
+		Map<Integer,BookInformation> booksMap=new HashMap<Integer, BookInformation>();
+		List<BookInformation> sellingBooks=new ArrayList<BookInformation>();
+		i=0;
+		while(i<bookList.size()) {
+			if(booksMap.put(bookList.get(i).getBookId(), bookList.get(i)) != null) {
+				sellingBooks.add(bookList.get(i));
+			}
+			i++;
+		}
+		bookList.clear();
+		booksMap.clear();
+		List<BookInformation> sellingbooklist2 = sellingBooks.subList(0, 8);
+		return sellingbooklist2;
 	}
 }
