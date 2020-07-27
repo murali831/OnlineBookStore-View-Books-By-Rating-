@@ -1,0 +1,83 @@
+
+
+  <div  class="text-primary heading "></div> 
+   
+<div>
+      <div id="formData" class="col-xl-5 col-lg-5 col-md-4 col-sm-4 mx-auto m-4 p-4 form p-3 jumbotron" style="background-color: white;">
+      <h2 class="text-center" >Edit My Profile</h2>
+      <div class="alert alert-success" *ngIf="message!=undefined">{{message}}</div>
+    <div class="alert alert-danger" *ngIf="errormsg!=undefined" [innerHTML]="errormsg"></div>
+<form name="formdata" #formdata="ngForm" (ngSubmit)="updatecustomerprofile()" novalidate class="feedback-form">
+  <div>
+   <b> Email Address</b>
+  <input type="text" id="email"  readonly class="form-control" name="email" placeholder="email" required #email="ngModel" [(ngModel)]="customerinfo.emailAddress" class="form-control border border-dark"/>
+</div>
+
+  <div>
+   <b> Full Name</b>
+  <input type="text" id="fullname" class="form-control" name="fullname" placeholder="Fullname" required minlength="8" maxlength="30" #fname="ngModel" [(ngModel)]="customerinfo.fullName" class="form-control border border-dark"/>
+  <div *ngIf="fname.invalid && fname.touched" class="alert alert-danger">*Atleast 8 Character is required<br>
+    <span *ngIf="fname.errors.required">*Your full name is Mandatory</span></div> 
+</div>
+
+
+
+  <div>
+ <b> Phone Number</b>
+  <input type="text" id="phoneno" class="form-control" name="phoneno" placeholder="phoneno" required minlength="10" maxlength="10" #pno="ngModel" [(ngModel)]="customerinfo.phoneNumber" class="form-control border border-dark"/>
+  <div *ngIf="pno.invalid && pno.touched" class="alert alert-danger">*please enter your 10 digit phone number<br>
+    <span *ngIf="pno.errors.required">*Your Phone number is Mandatory</span></div> 
+</div>
+
+<div>
+  <b>Address</b>
+  <input type="text" id="address" class="form-control" name="address" placeholder="address" required minlength="10" maxlength="128" #add="ngModel" [(ngModel)]="customerinfo.address" class="form-control border border-dark"/>
+  <div *ngIf="add.touched && add.invalid" class="alert alert-danger">*Address is too short (atleast 10 character is required)
+    <span *ngIf="add.errors.required">*Address is Mandatory</span></div> 
+</div>
+
+<div>
+  <b>City</b>
+<input type="text" id="city" class="form-control" name="city" placeholder="city" required minlength="3" maxlength="64" #city="ngModel" [(ngModel)]="customerinfo.city" class="form-control border border-dark"/>
+<div *ngIf="city.invalid && city.touched" class="alert alert-danger">*city name is too short (atleast 3 character is required)
+  <span *ngIf="city.errors.required">*City is Mandatory</span></div> 
+</div>
+
+<div>
+<b>ZipCode</b>
+<input type="number" id="zipcode" class="form-control" name="zipcode" placeholder="ZipCode" required #zcode="ngModel" [(ngModel)]="customerinfo.zipCode" class="form-control border border-dark"/>
+<div *ngIf="zcode.invalid && zcode.touched" class="alert alert-danger">
+  <span *ngIf="zcode.errors.required">*Zipcode is Mandatory</span></div> 
+</div>
+
+<div>
+<b>Country</b>
+<input type="text" id="country" class="form-control" name="country" placeholder="country" required minlength="3" maxlength="64" #country="ngModel" [(ngModel)]="customerinfo.country" class="form-control border border-dark"/>
+<div *ngIf="country.invalid && country.touched" class="alert alert-danger">*Country name is too short (atleast 3 character is required)
+  <span *ngIf="country.errors.required">*Country is Mandatory</span></div> 
+</div>
+<div>
+ <b> Password</b>
+<input type="password" id="password" class="form-control" name="password" placeholder="Password" minlength="8" maxlength="16" #passwd="ngModel" [(ngModel)]="newpassord" class="form-control border border-dark"/>
+ <div *ngIf="passwd.invalid && passwd.touched" class="alert alert-danger">*Password is too short (atleast 8 character is required)
+ <!--<span *ngIf="passwd.errors.required">*Password is Mandatory</span>  --></div>
+</div>
+
+<div>
+<b>Confirm Password</b>
+<input type="password" id="cpassword" class="form-control" name="cpassword" placeholder="Password" #cpasswd="ngModel" [(ngModel)]="cpassword" class="form-control border border-dark"/>
+<div *ngIf="newpassord!=cpassword && cpasswd.touched" class="alert alert-danger">*Must be same as new password
+  <!-- <span *ngIf="cpasswd.errors.required">*Password is Mandatory</span> -->
+  </div> 
+</div>
+
+<div class="mt-2 text-center">
+<input type="submit" value="Save" [disabled]="!formdata.valid" class="btn btn-primary"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button  routerLink="/viewcustomer"  class="btn btn-danger">Cancel </button>
+
+</div>
+</form>
+</div>
+</div>
+

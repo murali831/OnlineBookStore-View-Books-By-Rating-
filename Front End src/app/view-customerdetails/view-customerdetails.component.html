@@ -1,0 +1,61 @@
+
+<section class="col-md-8 mx-auto m-4 p-4">
+
+<div *ngIf="customerinformation==undefined" class="col-md-8 m-4 p-4 mx-auto">
+  <div class=" col-md-12 mt-4"></div>
+<form name="form1" #f="ngForm" (ngSubmit)="searchById()" novalidate class="feedback-form m-4 p-4">
+           
+    <div class="mt-2 text-center">
+     <h3>Customer Email:  </h3><input type="text" id="emailAddress" class="form-control" name="emailAddress" placeholder="customer Email" required #modelcard="ngModel" [(ngModel)]="email"/>
+      <input type="submit" value="search" [disabled]="!f.valid" class="btn btn-info mt-2" style="color: white;"/></div>
+  </form>
+  <section class="alert alert-danger mx-auto m-1" *ngIf="msg !=undefined">
+    {{msg}}
+  </section>
+</div>
+  <div *ngIf="customerinformation"  style="background-color: white;" class="col-md-7 mx-auto m-2 p-2">
+  <h4 class="col-md-10 mx-auto">Welcome, {{customerinformation.fullName}}</h4>
+  <table class="table table-hover table-striped table-bordered">
+    <tr>
+   <th class=" p-2 "><b>E-mail Address:</b></th>
+   <td class="  p-2">{{customerinformation.emailAddress}}</td>
+  </tr>
+ 
+   <tr>
+     <th class="col-md-4 p-2 "><b>Full Name:</b></th>
+     <td class="  p-2">{{customerinformation.fullName}}</td>
+   </tr>
+   
+     <tr>
+       <th class="col-md-4 p-2 "><b>Phone Number:</b></th>
+       <td class=" p-2">{{customerinformation.phoneNumber}}</td>
+     </tr>
+       <tr>
+         <th class="col-md-4 p-2 "><b>Address:</b></th>
+         <td class=" p-2">{{customerinformation.address}}</td>
+       </tr>
+         <tr>
+           <th class="col-md-4 p-2 "><b>City:</b></th>
+           <td class=" p-2">{{customerinformation.city}}</td>
+         </tr> 
+         <tr>
+          <th class="col-md-4 p-2 "><b>Zip Code:</b></th>
+          <td class=" p-2">{{customerinformation.zipCode}}</td>
+        </tr> 
+        <tr>
+          <th class="col-md-4 p-2 "><b>Country:</b></th>
+          <td class=" p-2">{{customerinformation.country}}</td>
+        </tr>      
+      </table>
+      <form name="form" #f1="ngForm" (ngSubmit)="gotoupdate('updateuserprofile')" novalidate class="feedback-form">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit" value="Update" [disabled]="!f1.valid"class="btn btn-primary"/>
+       </form>
+  
+    </div>
+</section>
+
+          
+      
+      

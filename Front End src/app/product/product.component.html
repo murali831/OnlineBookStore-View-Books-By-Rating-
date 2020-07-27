@@ -1,0 +1,95 @@
+<section class="container col-md-12" style=" background-color:  #d5d5d5;" >
+  <section class="col-md-10 mx-auto row m-4 p-4" style="background-color: white;">
+    
+    
+    
+    <section class="col-md-6 mx-auto" >
+      <div class="img-hover-zoom" class="m-4">
+        <img src="{{pathurl}}" alt="" />
+      </div>
+    </section>
+    <section class="col-md-6 mx-auto p-4">
+      <div class="p-2 mx-auto mt-3">
+        <h2 class="col-md-10 mx-auto p-2">{{book.title}}</h2>
+      </div>
+      <div class="col-md-12 row">
+        <h5 class="col-md-6 mx-auto">Price :  </h5>
+        <h5 class="col-md-6" style="color: cornflowerblue;">{{book.price}}</h5>
+      </div>
+      <div class="col-md-12 row">
+        <h5 class="col-md-6 mx-auto">Rating :  </h5>
+        <h5 class="col-md-6">{{book.rating}}</h5>
+      </div>
+      <div class="col-md-12 row">
+        <h5 class="col-md-6 mx-auto">Author :  </h5>
+        <h5 class="col-md-6">{{book.author}}</h5>
+      </div>
+      <div class="col-md-12 p-2 row">
+        <h6 class="col-md-10 row">{{book.description}}</h6>
+      </div>
+      <div class="col-md-12 mx-auto p-2">
+        <div class="col-md-8 mx-auto"><a class="btn btn-info" style="color: white;">Add to Cart</a></div>
+      </div>
+
+    </section>
+
+
+    <section class="col-md-10 mx-auto m-4 p-2" >
+      <section class="col-md-10 mx-auto row" style="background-color: white;">
+  
+        <section class="col-md-12 mx-auto row mt-4" style="background-color: white;">
+          <h3 class="col-md-4 mx-auto p-1" style="color:navy">Reviews</h3>
+          <div class="col-md-9"></div>
+          <hr class="col-md-10 p-1" style="background-color:black"/>
+          <div class="col-md-12 p-2"></div>
+          <div *ngFor ="let review of reviews">
+            <div class="col-md-12 row mx-auto">
+              <h5 class="col-md-1"></h5>
+              <h6 class="col-md-5 mx-auto"> {{review.customerId}} </h6>
+              <h6 class="col-md-2 mx-auto">Rating :  </h6>
+              <h4 class="col-md-1 mx-auto" style="color: orange;">{{review.bookRating}}</h4>
+              <h5 class="col-md-3"></h5>
+            </div>
+            <div class="col-md-12 row">
+              <h5 class="col-md-10 mx-auto" style="color:rebeccapurple">{{review.reviewHeadline}} </h5>
+            </div>
+            <div class="col-md-12 row">
+              <label class="col-md-10 mx-auto">{{review.reviewComment}} </label>
+            </div>
+  
+            <hr class="col-md-12" style="background-color:navy; size: 5px;"/>
+          </div>
+          
+  
+          
+      </section>
+      <hr class="col-md-12 p-1" style="background-color: grey;"/>
+        <form #reviewform="ngForm" (ngSubmit)="addReview()" class="col-md-12 row">
+          <div class=" p-4 col-md-12"></div>
+          <div class="col-md-7" style="margin-left: 50px;"><h3>Write a Review</h3></div>
+          <div class="col-md-4"><div class="m-2 text-center"><input type="submit" value="Add Review" class="btn btn-danger"/></div></div>
+          <div class="col-md-10 mx-auto row p-3">
+            <label class="mr-4"><h5>Rating</h5></label>
+            <div class="col-md-4"><input type="range" name="rating" value="reviewForm.bookRating" [(ngModel)]="reviewForm.bookRating" required #rating="ngModel"  min="1" max="5"></div>
+            <div class="col-md-4"><h3 style="color: rgb(230, 83, 16);">{{reviewForm.bookRating}}</h3></div>
+          </div>
+          <div class="col-md-10 mx-auto row  form-group">
+            <label for="usr"><h5>Headline:</h5></label>
+            <input type="text" class="form-control" name="headline" [(ngModel)]="reviewForm.reviewHeadline" required #headline="ngModel"  id="usr"/>
+          </div>
+          <div class="col-md-10 mx-auto row form-group">
+            <label for="comment"><h5>Comment:</h5></label>
+            <textarea class="form-control" rows="4"  name="comment" [(ngModel)]="reviewForm.reviewComment" required #comment="ngModel" id="comment"></textarea>
+          </div>
+          
+      </form>
+        
+        
+      
+      
+      </section>
+  </section>
+
+  
+  </section>
+</section>
